@@ -6,6 +6,9 @@ namespace BratspilsDepot.Controllers
 {
     public class HomeController : Controller
     {
+        public Kurv basket = new Kurv();
+        
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
