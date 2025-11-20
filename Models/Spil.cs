@@ -37,6 +37,8 @@
             set { spilBeskrivelse = value; }
         }
 
+        public string Name { get; internal set; }
+
         public string SpilInfo()
         {
             return $"Navn: {SpilNavn} Id: {SpilId} Pris: {SpilPris} Kategori: {SpilKategori}";

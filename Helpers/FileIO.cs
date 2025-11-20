@@ -46,7 +46,7 @@ public static class FileIO
 		{
 			while((line = reader.ReadLine()) != null)
 			{
-				lines.add(line);
+				lines.Add(line);
 			}
 		}
 
