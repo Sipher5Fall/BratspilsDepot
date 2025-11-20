@@ -8,5 +8,10 @@
         {
             ordreHistorik = new List<Ordre>();
         }
+
+        public void TilføjOrdre(Ordre ordre)
+        {
+            ordreHistorik.Add(ordre)
+        }
     }
 }
