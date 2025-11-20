@@ -11,7 +11,7 @@
 
         public void TilføjOrdre(Ordre ordre)
         {
-            ordreHistorik.Add(ordre)
+            ordreHistorik.Add(ordre);
         }
     }
 }
