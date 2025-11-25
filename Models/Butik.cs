@@ -20,9 +20,9 @@ namespace Webshop.Models
 
         }
 
-        public void SeKatalog()
+        public List<string[]> SeKatalog()
         {
-            spilkatalog.placeholdernavn();
+            return spilkatalog.SeKatalog();
         }
         public void LægIKurv(string Id)
         {

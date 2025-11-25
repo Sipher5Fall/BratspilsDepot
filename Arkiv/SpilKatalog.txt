@@ -3,3 +3,7 @@ Splendor;2;199,95;Familie, Strategi
 Uno;3;99,95;Familie, Børnespil
 Myretuen;4;199,95;Børnespil
 Pandemic;5;179,95;Samarbejd, Strategi
+Catan;6;250,95;Strategi
+Stratego;7;149,95;Strategi
+Cards Against Humanity;8;99,95;Party
+Yu-Gi-Oh;9;500;Kortspil
