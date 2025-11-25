@@ -47,7 +47,7 @@ namespace BratspilsDepot.Models
         {
             foreach (var spil in varer)
             {
-                Console.WriteLine();
+                Console.WriteLine(spil[0]);
             }
         }
 

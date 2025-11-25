@@ -24,6 +24,18 @@ namespace Webshop.Models
         {
             spilkatalog.placeholdernavn();
         }
+        public void LægIKurv(string Id)
+        {
+            kurv.LægIKurv(Id);
+        }
+        public void FjernFraKurv(string Id)
+        {
+            kurv.FjernSpil(Id);
+        }
+        public void Bestil()
+        {
+            kurv.Bestil();
+        }
     }
 
 }
