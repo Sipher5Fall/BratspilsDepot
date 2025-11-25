@@ -1,62 +1,64 @@
 ﻿using BratspilsDepot.Models;
 using System.Diagnostics;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BratspilsDepot.Models
 {
     public class Kurv
     {
-        public int SpilId { get; set;}
-        public string Name{ get; set;}
+        public int Id { get; set; }
+        public string Name { get; set; }
 
-        private List<Spil> SpilIkurv = new List<Spil>();
-        public List<Spil> SpilIKurv { get; set; }
+        private List<string[]> varer = new List<string[]>();
+        private SpilKatalog katalog;
 
-
-        public Kurv() { }
-        public void TilføjSpil()
+        public Kurv() 
         {
-            SpilIKurv.Add(new Spil() { Name = "Matador", SpilId = 1000, SpilPris = 200 });
-            SpilIKurv.Add(new Spil() { Name = "Fisk", SpilId = 1001, SpilPris = 50 });
-            SpilIKurv.Add(new Spil() { Name = "Uno", SpilId = 1003, SpilPris = 99 });
+            katalog = new SpilKatalog();
+        }
+        public void LægIKurv(string Id)
+        {
+            List<string[]> spilliste = katalog.SeKatalog();
+           for (int i = 0; i<spilliste.Count; i++ )// får counter med. tæller hvor mange gange vi kører igennem.
+            { 
+                if (spilliste[i][1].Contains(Id))
+                {
+                    varer.Add(spilliste[i]);
+                    break;
+                }
+            }    
 
+        }
 
-            string sti ="";
-            Directory.SetCurrentDirectory(sti);
-            sti += "/Helpers/WriteLines";
-           List<string> Spilkatalog = FileIO.Read(sti);
+        public void FjernSpil(string Id)
+        {
+            for (int i = 0; i < varer.Count; i++)
+            {
+                if (varer[i][1].Contains(Id))
+                {
+                    varer.RemoveAt(i);
+                    break;
+                }
+            }
 
-
-           // string[] linesUp = System.IO.File.ReadAllLines(@"WriteLines.txt");
-
-            // string[] ar = { "I", "Belive", "you" };
-            // System.IO.File.WriteAllLines(@"WriteLines.txt", ar);
-
-
-
-            foreach (Spil spil in SpilIKurv)
+        }
+        public void VisKurv()
+        {
+            foreach (var spil in varer)
             {
                 Console.WriteLine();
             }
-         
         }
 
-        public void FjernSpil()
+        public void Bestil()
         {
-            SpilIKurv.Remove(new Spil());
-
-            
-
-            
-
-
-        }
-
-        public class ShopServic()
-        {
-            
+            Ordre ordre = new Ordre();
+            ordre.kundeinfo();
+            ordre.Varer = varer;
+            ordre.beregnetpris();
+            ordre.bekræftOrdre();
         }
 
     }
 }
-

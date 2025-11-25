@@ -1,14 +1,11 @@
-using System.Diagnostics;
 using BratspilsDepot.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace BratspilsDepot.Controllers
 {
     public class HomeController : Controller
     {
-        public Kurv basket = new Kurv();
-        
-
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -31,5 +28,6 @@ namespace BratspilsDepot.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        
     }
 }
