@@ -1,8 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<string[]> //forvent List<string[]> type
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    div.card-columns {
+        width:100%;
+        overflow:auto;
+    }
+
+    div.card-columns div.card {
+        width:33%;
+        height:300px;
+        float:left;
+    }
+</style>
+
+
+<body>
+<div class="card-columns">
+@foreach (string[] spil in Model)
+{
+    <div class="card">
+        <div class="card-img">
+            <div class="card-body">
+                <h1 class="card-title" style="color:darkcyan">@spil[0]</h1>
+                <h5 class="card-info"> @($"Pris: {spil[2]} Kategori: {spil[3]}")</h5>
+            </div>
+        </div>
+    </div>
+}
 </div>
+
+</body>
+
+
