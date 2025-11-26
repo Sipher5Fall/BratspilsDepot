@@ -1,9 +1,9 @@
-Wingspan;1;469,95;Familie, Strategi;/Billeder/Wingspan.jpg
-Splendor;2;199,95;Familie, Strategi;/Billeder/Splendor.jpg
-Uno;3;99,95;Familie, Børnespil;/Billeder/Uno.jpg
-Myretuen;4;199,95;Børnespil;/Billeder/Myretuen.jpg
-Pandemic;5;179,95;Samarbejd, Strategi;/Billeder/Pandemic.jpg
-Catan;6;299,95;Strategi;/Billeder/Catan.jpg
-Stratego;7;249,95;Strategi;/Billeder/Stratego.jpg
-Cards Against Humanity;8;299,95;Party;/Billeder/CardAH.jpg
-Yu-Gi-Oh box;9;249,95;Kortspil;/Billeder/YoGiOh.png
+Wingspan;1;469,95;Familie, Strategi;/BillederC/Wingspan.jpg
+Splendor;2;199,95;Familie, Strategi;/BillederC/Splendor.jpg
+Uno;3;99,95;Familie, Børnespil;/BillederC/Uno.jpg
+Myretuen;4;199,95;Børnespil;/BillederC/Myretuen.jpg
+Pandemic;5;179,95;Samarbejd, Strategi;/BillederC/Pandemic.jpg
+Catan;6;299,95;Strategi;/BillederC/Catan.jpg
+Stratego;7;249,95;Strategi;/BillederC/Stratego.jpg
+Cards Against Humanity;8;299,95;Party;/BillederC/CardAH.jpg
+Yu-Gi-Oh box;9;249,95;Kortspil;/BillederC/YoGiOh.png
