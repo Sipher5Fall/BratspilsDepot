@@ -1,4 +1,5 @@
-﻿@model List<string[]> //forvent List<string[]> type
+﻿<!DOCTYPE html>
+@model List<string[]> //forvent List<string[]> type
 
 <style>
     div.card-columns {
@@ -19,11 +20,12 @@
 @foreach (string[] spil in Model)
 {
     <div class="card">
-        <div class="card-img">
+        <div class="card-img" >
             <div class="card-body">
                 <h1 class="card-title" style="color:darkcyan">@spil[0]</h1>
                 <h5 class="card-info"> @($"Pris: {spil[2]} Kategori: {spil[3]}")</h5>
             </div>
+            <img src="@spil[4]" />
         </div>
     </div>
 }
