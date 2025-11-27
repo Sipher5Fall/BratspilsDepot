@@ -19,6 +19,7 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-image: linear-gradient(to bottom, aliceblue, white);
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -28,6 +29,23 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+.card {
+
+}
+
+.card-title {
+    color:seagreen;
+    font: bold 36px calibri;
+    text-shadow: 1px 1px 2px darkgray;
+}
+
+.card-info{
+    margin:-15px;
+}
+.card-details {
+    opacity:0.5;
 }
 
 .card-img{
