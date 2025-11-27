@@ -3,18 +3,23 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
+
+/// <summary>
+/// Constructer for vores kurv klasse.
+/// 
+/// skrevet af . 
+/// </summary>
+
 namespace BratspilsDepot.Models
 {
     public class Kurv
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        private List<string[]> varer = new List<string[]>();
+        private List<string[]> varer;
         private SpilKatalog katalog;
 
         public Kurv() 
         {
+            varer = new List<string[]>();
             katalog = new SpilKatalog();
         }
         public void LægIKurv(string Id)
@@ -51,6 +56,11 @@ namespace BratspilsDepot.Models
             }
         }
 
+        /// <summary>
+        /// Constructer for vores Bestil klasse.
+        /// 
+        /// skrevet af Siwakon . 
+        /// </summary>
         public void Bestil()
         {
             Ordre ordre = new Ordre();
