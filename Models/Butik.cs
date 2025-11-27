@@ -5,19 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Webshop.Models
+namespace BratspilsDepot.Models
 {
     internal class Butik
     {
         private OrdreHistorik ordrehistorik;
         public SpilKatalog spilkatalog;
-        public Kurv kurv; 
+        public static Kurv kurv = new Kurv();
         public Butik() 
         {
             ordrehistorik = new OrdreHistorik();   
             spilkatalog = new SpilKatalog();
-            kurv = new Kurv();
-
         }
 
         public List<string[]> SeKatalog()
