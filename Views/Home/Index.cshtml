@@ -22,17 +22,8 @@
     <div class="card">
         <div class="card-img" >
             <div class="card-body">
-                <h1 class="card-title">@spil[0]</h1>
-                <p class="card-info"><div class="card-details" style="float:left">@($"Pris: {spil[2]}")</div><div class="card-details" style="float:right">@($"Kategori: {spil[3]}")</div></p>
-                <h2 class="card-title" style="color:darkcyan">@spil[0]</h2>
-                <h5 class="card-info"> @($"Pris: {spil[2]} Kategori: {spil[3]}")</h5>
-                            
-                                <form action="/Home/PutIkurven" metode ="get">
-                                 <input type ="hidden" name="Id" value="@spil[1]"/> 
-                                <button>Tilføj</button>
-
-                                </form>
-                          
+                            <div><h2 class="card-title">@spil[0]</h2></div><div><p><form action="/Home/PutIkurven" metode="get"><input type="hidden" name="Id" value="@spil[1]" /><button class="card-button">Tilføj til kurv</button></form></p></div>
+                <p class="card-info"><div class="card-details" style="float:left">@($"Pris: {spil[2]}")</div><div class="card-details" style="float:right">@($"Kategori: {spil[3]}")</div></p>                                       
             </div>
             <img src="@spil[4]" />
         </div>
