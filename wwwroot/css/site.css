@@ -51,21 +51,36 @@ body {
 }
 
 .card-title {
+    width: 80%;
+    height: auto;
     color:seagreen;
-    font: bold 36px calibri;
+    font: bold 26px calibri;
     text-shadow: 1px 1px 1px darkgray;
 }
 
 .card-info{
-    margin:-15px;
+    margin:-10px;
 }
 
 .card-details {
     opacity:0.5;
 }
 
-.card-img{
-    height: 100px;
+.card-img img{
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+}
+
+.card-body button {
+    position:absolute;
+    top: 10%;
+    right: 5%;
+
+    background-color:seagreen;
+    color:white;
+    border-radius: 5px;
+    border:none;
 }
 
 
