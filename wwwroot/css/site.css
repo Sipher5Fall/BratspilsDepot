@@ -31,19 +31,35 @@ body {
   text-align: start;
 }
 
-.card {
+.card-columns .card:hover .card-img {
+    opacity:1;
+}
 
+.card-columns .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
+    transition: 0.5s ease;
+}
+
+.card-columns {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.card-columns::-webkit-scrollbar {
+    display: none;
 }
 
 .card-title {
     color:seagreen;
     font: bold 36px calibri;
-    text-shadow: 1px 1px 2px darkgray;
+    text-shadow: 1px 1px 1px darkgray;
 }
 
 .card-info{
     margin:-15px;
 }
+
 .card-details {
     opacity:0.5;
 }
@@ -51,6 +67,7 @@ body {
 .card-img{
     height: 100px;
 }
+
 
 
 /* test kode fra ASP.NET tutorial */
