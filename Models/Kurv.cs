@@ -1,4 +1,5 @@
 ﻿using BratspilsDepot.Models;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -48,13 +49,11 @@ namespace BratspilsDepot.Models
             }
 
         }
-        public void VisKurv()
+        public List<string[]> VisKurv()
         {
-            foreach (var spil in varer)
-            {
-                Console.WriteLine(spil[0]);
-            }
+            return varer;
         }
+
 
         /// <summary>
         /// Constructer for vores Bestil klasse.

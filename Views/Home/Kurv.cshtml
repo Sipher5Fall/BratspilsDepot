@@ -1,1 +1,32 @@
-﻿KUUUUUUURV!
+﻿@model List<string[]>
+
+    <div>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+
+        <div class = "Item">
+
+            <div class = "img">
+                <img src ="@Model[i][4]"/>
+            </div>
+
+            <div class="Title">
+                @Model[i][0]
+               
+            </div>
+
+            <div class="Pris">
+                @Model[i][2]
+            </div>
+
+            <div class="Antal">
+
+            </div>
+
+        </div>
+
+
+
+
+    }
+</div>
