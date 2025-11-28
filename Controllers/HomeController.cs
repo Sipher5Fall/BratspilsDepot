@@ -32,7 +32,8 @@ namespace BratspilsDepot.Controllers
 
         public IActionResult Kurv()
         {
-            return View();
+            List<string[]> Kurv = weShop.hentKurv();
+            return View((object)Kurv);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
