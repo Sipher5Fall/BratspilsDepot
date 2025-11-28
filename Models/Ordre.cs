@@ -21,13 +21,13 @@ namespace BratspilsDepot.Models
         public string KundeNavn { get; set; }
         public string KundeMail { get; set; }
         public int KundeTlf { get; set; }
-        public List<string[]> Varer { get; set; }
+        public List<Spil> Varer { get; set; }
 
         public double Total;
         public string bestillingsdato;
         public Ordre()
         {
-            Varer = new List<string[]>();
+            Varer = new List<Spil>();
             bestillingsdato = dato();
         }
 
@@ -40,12 +40,12 @@ namespace BratspilsDepot.Models
             }
         }
 
-        public List<double> mathhelper(List<string[]> Varer)
+        public List<double> mathhelper(List<Spil> Varer)
         {
             List<double> priser = new List<double>();
-            foreach (string[]vare in Varer)
+            foreach (Spil vare in Varer)
             {
-                double pris = Convert.ToDouble(vare[2]);
+                double pris = vare.SpilPris;
                 priser.Add(pris);
             }
 

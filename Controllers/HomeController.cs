@@ -8,7 +8,7 @@ namespace BratspilsDepot.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private static Butik weShop;
-        private List<string[]> katalog;
+        private List<Spil> katalog;
         public HomeController(ILogger<HomeController> logger) //hver gang IactionResult kører, kører den gennem loggeren. koden kørers igen. 
         {
             _logger = logger;
@@ -20,7 +20,7 @@ namespace BratspilsDepot.Controllers
         {
             return View((object)katalog);     // sker allersidst. return et vidirect med viewets navn.
         }
-        public IActionResult PutIkurven(string Id)
+        public IActionResult PutIkurven(int Id)
         {
             weShop.LægIKurv(Id);
             return View("Index", (object)katalog);     
@@ -32,7 +32,7 @@ namespace BratspilsDepot.Controllers
 
         public IActionResult Kurv()
         {
-            List<string[]> Kurv = weShop.hentKurv();
+            List<Spil> Kurv = weShop.hentKurv();
             return View((object)Kurv);
         }
 

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-@model List<string[]> //forvent List<string[]> type
+@model List<Spil> //forvent List<string[]> type
 
 <style>
     div.card-columns {
@@ -17,15 +17,15 @@
 
 <body>
 <div class="card-columns">
-@foreach (string[] spil in Model)
+@foreach (Spil spil in Model)
 {
     <div class="card">
         <div class="card-img" >
             <div class="card-body">
-                            <div><h2 class="card-title">@spil[0]</h2></div><div><p><form action="/Home/PutIkurven" metode="get"><input type="hidden" name="Id" value="@spil[1]" /><button class="card-button">Tilføj til kurv</button></form></p></div>
-                <p class="card-info"><div class="card-details" style="float:left">@($"Pris: {spil[2]}")</div><div class="card-details" style="float:right">@($"Kategori: {spil[3]}")</div></p>                                       
+                            <div><h2 class="card-title">@spil.SpilNavn</h2></div><div><p><form action="/Home/PutIkurven" metode="get"><input type="hidden" name="Id" value="@spil.SpilId" /><button class="card-button">Tilføj til kurv</button></form></p></div>
+                <p class="card-info"><div class="card-details" style="float:left">@($"Pris: {spil.SpilPris}")</div><div class="card-details" style="float:right">@($"Kategori: {spil.SpilKategori}")</div></p>                                       
             </div>
-            <img src="@spil[4]" />
+            <img src="@spil.SpilBilledStiC" />
         </div>
     </div>
 }
