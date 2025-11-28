@@ -6,7 +6,9 @@
         private int spilId;
         private double spilPris;
         private string spilKategori;
-        private string spilBeskrivelse;
+        private string spilBilledStiC;
+        private string spilBilledStiFuld;
+        private int spilantal;
 
         public string SpilNavn
         {
@@ -31,18 +33,38 @@
             set { spilKategori = value; }
         }
 
-        public string SpilBeskrivelse
+        public string SpilBilledStiC
         {
-            get { return spilBeskrivelse; }
-            set { spilBeskrivelse = value; }
+            get { return spilBilledStiC; }
+            set { spilBilledStiC = value; }
+        }
+        public string SpilBilledStiFuld
+        {
+            get { return spilBilledStiFuld; }
+            set { spilBilledStiFuld = value; }
+        }
+        public int SpilAntal
+        {
+            get { return spilantal; }
+            set { spilantal = value; }
         }
 
-        public string Name { get; internal set; }
+        public Spil(string navn, int id, double pris, string kategori, string billedstiC, string billedstifuld)
+        {
+            SpilNavn = navn;
+            SpilId = id;
+            SpilPris = pris;
+            SpilKategori = kategori;
+            SpilBilledStiC = billedstiC;
+            SpilBilledStiFuld = billedstifuld;
+            SpilAntal = 1;
+        }
 
         public string SpilInfo()
         {
             return $"Navn: {SpilNavn} Id: {SpilId} Pris: {SpilPris} Kategori: {SpilKategori}";
         }
+        
 
     }
 }
