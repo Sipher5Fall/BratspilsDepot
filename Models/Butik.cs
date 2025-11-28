@@ -18,15 +18,15 @@ namespace BratspilsDepot.Models
             spilkatalog = new SpilKatalog();
         }
 
-        public List<string[]> SeKatalog()
+        public List<Spil> SeKatalog()
         {
             return spilkatalog.SeKatalog();
         }
-        public void LægIKurv(string Id)
+        public void LægIKurv(int Id)
         {
             kurv.LægIKurv(Id);
         }
-        public void FjernFraKurv(string Id)
+        public void FjernFraKurv(int Id)
         {
             kurv.FjernSpil(Id);
         }
@@ -35,7 +35,7 @@ namespace BratspilsDepot.Models
             kurv.Bestil();
         }
 
-        public List<string[]> hentKurv()
+        public List<Spil> hentKurv()
         {
             return kurv.KurvTilDisplay();
         }

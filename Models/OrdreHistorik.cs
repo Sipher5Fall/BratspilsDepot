@@ -26,9 +26,9 @@
             encoded.Add($"Tlf: {ordre.KundeTlf}");
             encoded.Add($"e-mail: {ordre.KundeMail}");
             encoded.Add("-------------------------------------");
-            foreach (string[] spil in ordre.Varer)
+            foreach (Spil spil in ordre.Varer)
             {
-                encoded.Add($"{spil[0]}              {spil[2]}");
+                encoded.Add($"{spil.SpilNavn}              {spil.SpilPris}");
             }
             encoded.Add($"Samlet pris: {ordre.Total}");
 

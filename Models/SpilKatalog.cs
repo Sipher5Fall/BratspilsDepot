@@ -12,10 +12,10 @@ namespace BratspilsDepot.Models
             TekstKatalog = new List<string[]>(); 
             TekstKatalog = HentKatalogtekst(); 
             Katalog = new List<Spil>();
-            Katalog = HentKatalogspil();
+            BygKatalogspil();
         }
         
-        public void HentKatalogtekst()
+        public List<string[]> HentKatalogtekst()
         {
             
             string Katalogsti = "";
@@ -28,9 +28,10 @@ namespace BratspilsDepot.Models
                 string[] splittet = spil.Split(';');
                 TekstKatalog.Add(splittet);
             }
+            return TekstKatalog;
         }
 
-        public void HentKatalogspil()
+        public void BygKatalogspil()
         {
             string Katalogsti = "";
             Katalogsti += "/SpilKatalog";
@@ -41,12 +42,17 @@ namespace BratspilsDepot.Models
                 string[] splittet = spil.Split(';');
                 Spil produkt = new Spil(splittet[0], Convert.ToInt32(splittet[1]), Convert.ToDouble(splittet[2]), splittet[3], splittet[4], splittet[5]);
                 Katalog.Add(produkt);
-            }
+            } 
+        }
+        public List<Spil> HentKatalogspil()
+        {
+            return Katalog; 
         }
 
-        public List<string[]> SeKatalog()
+
+        public List<Spil> SeKatalog()
         {
-            return TekstKatalog;
+            return Katalog;
         }
   
     }
