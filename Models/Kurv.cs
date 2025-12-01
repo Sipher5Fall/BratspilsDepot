@@ -8,40 +8,42 @@ using System.Security.Cryptography.X509Certificates;
 /// <summary>
 /// Constructer for vores kurv klasse.
 /// 
-/// skrevet af . 
+/// skrevet af Ida . 
 /// </summary>
 
 namespace BratspilsDepot.Models
 {
     public class Kurv
     {
-        private List<string[]> varer;
+        private List<Spil> varer;   // vil man ikke aflevere objeket kan man aflevere det som string. så kunden aldrig rør vores objekt.
         private SpilKatalog katalog;
+
 
         public Kurv() 
         {
-            varer = new List<string[]>();
+            varer = new List<Spil>();
             katalog = new SpilKatalog();
+            varer = katalog.HentKatalogspil();
         }
-        public void LægIKurv(string Id)
+        public void LægIKurv(int Id)
         {
-            List<string[]> spilliste = katalog.SeKatalog();
-           for (int i = 0; i<spilliste.Count; i++ )// får counter med. tæller hvor mange gange vi kører igennem.
+           
+           for (int i = 0; i <varer.Count; i++ )// får counter med. tæller hvor mange gange vi kører igennem.
             { 
-                if (spilliste[i][1].Contains(Id))
+                if (varer[i].SpilId == Id)
                 {
-                    varer.Add(spilliste[i]);
+                    varer[i].SpilAntal += 1;
                     break;
                 }
             }    
 
         }
 
-        public void FjernSpil(string Id)
+        public void FjernSpil(int Id) // skal ændres i
         {
             for (int i = 0; i < varer.Count; i++)
             {
-                if (varer[i][1].Contains(Id))
+                if (varer[i].SpilId == Id)
                 {
                     varer.RemoveAt(i);
                     break;
@@ -49,11 +51,23 @@ namespace BratspilsDepot.Models
             }
 
         }
-        public List<string[]> VisKurv()
+        public List<Spil> VisKurv()
         {
             return varer;
         }
 
+        public List<Spil> KurvTilDisplay() 
+        {
+            List<Spil> rettekurv = katalog.HentKatalogspil();  
+            for (int i = 0; i < varer.Count; i++)
+            {
+                if (varer[i].SpilAntal == 0)
+                {
+                    rettekurv.Remove(rettekurv[i]);
+                }
+            }
+                return rettekurv;
+        }
 
         /// <summary>
         /// Constructer for vores Bestil klasse.
@@ -68,6 +82,6 @@ namespace BratspilsDepot.Models
             ordre.beregnetpris();
             ordre.bekræftOrdre();
         }
-
+        
     }
 }

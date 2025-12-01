@@ -57,7 +57,7 @@
             SpilKategori = kategori;
             SpilBilledStiC = billedstiC;
             SpilBilledStiFuld = billedstifuld;
-            SpilAntal = 1;
+            SpilAntal = 0;
         }
 
         public string SpilInfo()
