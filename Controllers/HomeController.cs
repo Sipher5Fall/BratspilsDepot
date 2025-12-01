@@ -36,6 +36,34 @@ namespace BratspilsDepot.Controllers
             return View((object)Kurv);
         }
 
+        public IActionResult PlusIKurv(int id)
+        {
+            weShop.LægIKurv(id);
+            List<Spil> Kurv = weShop.hentKurv();
+            return View("Kurv",(object)Kurv); 
+        }
+
+        public IActionResult MinusIKurv(int id)
+        {
+            weShop.FjernFraKurv(id);
+            List<Spil> Kurv = weShop.hentKurv();
+            return View("Kurv", (object)Kurv);
+        }
+
+        public IActionResult BestillingsForm()
+        {
+            return View(); 
+        }
+
+        public IActionResult BekræftBestilling(string Navn, string Mail, int TelefonNummer)
+        {
+            Ordre ordre = weShop.LavOrdre();
+            
+            return View();
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

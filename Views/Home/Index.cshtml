@@ -22,7 +22,17 @@
     <div class="card">
         <div class="card-img" >
             <div class="card-body">
-                            <div><h2 class="card-title">@spil.SpilNavn</h2></div><div><p><form action="/Home/PutIkurven" metode="get"><input type="hidden" name="Id" value="@spil.SpilId" /><button class="card-button">Tilføj til kurv</button></form></p></div>
+                            <div>
+                                <h2 class="card-title">@spil.SpilNavn</h2>
+                            </div>
+                            <div>
+                                <p>
+                                    <form action="/Home/PutIkurven" metode="get">
+                                        <input type="hidden" name="Id" value="@spil.SpilId" />
+                                        <button class="card-button">Tilføj til kurv</button>
+                                    </form>
+                                </p>
+                            </div>
                 <p class="card-info"><div class="card-details" style="float:left">@($"Pris: {spil.SpilPris}")</div><div class="card-details" style="float:right">@($"Kategori: {spil.SpilKategori}")</div></p>                                       
             </div>
             <img src="@spil.SpilBilledStiC" />
