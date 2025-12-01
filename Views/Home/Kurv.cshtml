@@ -4,30 +4,35 @@
     @for (int i = 0; i < Model.Count; i++)
     {
 
-        <div class = "Item">
+        <div class = "Kurv-item">
 
-            <div class = "img">
+            <div class = "Kurv-img" style="display:inline"  >
                 <img src ="@Model[i].SpilBilledStiFuld"/>
             </div>
 
-            <div class="Title">
+            <div class="Title" style="display:inline">
                 @Model[i].SpilNavn
                
             </div>
 
-            <div class="Pris">
+            <div class="Pris" style="display:inline">
                 @Model[i].SpilPris
             </div>
 
-            <div class="Antal">
+            <div class="Antal" style="display:inline">
+               <form action="/Home/PlusIKurv" metode="get"><input type="hidden" name="Id" value="@Model[i].SpilId" /><button class="plusbtn">+</button></form>
                @Model[i].SpilAntal
+              <form action="/Home/MinusIKurv" metode="get"><input type="hidden" name="Id" value="@Model[i].SpilId" /> <button class="minbtn">-</button></form>
 
             </div>
 
         </div>
 
-
-
-
     }
+
+    <div>
+        <form action="/Home/BestillingsForm" metode="get">
+            <button class="bestilbtn">Bestil</button>
+        </form>
+    </div>
 </div>

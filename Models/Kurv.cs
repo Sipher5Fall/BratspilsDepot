@@ -33,6 +33,7 @@ namespace BratspilsDepot.Models
                 if (localKatalog[i].SpilId == Id)
                 {
                     varer.Add (localKatalog[i]);
+                    break;
                 }
             }
 
@@ -44,7 +45,11 @@ namespace BratspilsDepot.Models
             {
                 if (varer[i].SpilId == Id)
                 {
-                    varer.RemoveAt(i);
+                    varer[i].SpilAntal--;
+                    if (varer[i].SpilAntal == 0)
+                    {
+                        varer.RemoveAt(i);
+                    }
                     break;
                 }
             }
@@ -64,7 +69,11 @@ namespace BratspilsDepot.Models
             {
                 Spil spil = localVarer[0];
                 localVarer.RemoveAt(0);
-                spil.SpilAntal = 1;
+                if(spil.SpilAntal < 1)
+                { 
+                    spil.SpilAntal = 1; 
+                }
+
                 localList.Add(spil);
                 j = -1;
                 for (int i = 0; i < localVarer.Count; i++)
@@ -76,6 +85,7 @@ namespace BratspilsDepot.Models
                     }
                 }
             }
+            varer = localList.ToList();
             return localList;
         }
 
@@ -92,7 +102,7 @@ namespace BratspilsDepot.Models
         public void Bestil()
         {
             Ordre ordre = new Ordre();
-            ordre.kundeinfo();
+            //ordre.kundeinfo();
             ordre.Varer = varer;
             ordre.beregnetpris();
             ordre.bekræftOrdre();

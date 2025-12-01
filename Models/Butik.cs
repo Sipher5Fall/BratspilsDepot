@@ -12,6 +12,7 @@ namespace BratspilsDepot.Models
         private OrdreHistorik ordrehistorik;
         public SpilKatalog spilkatalog;
         public static Kurv kurv = new Kurv();
+        private Ordre ordre;
         public Butik()
         {
             ordrehistorik = new OrdreHistorik();
@@ -29,6 +30,12 @@ namespace BratspilsDepot.Models
         public void FjernFraKurv(int Id)
         {
             kurv.FjernSpil(Id);
+        }
+
+        public Ordre LavOrdre()
+        {
+            ordre = new Ordre();
+            return ordre;
         }
         public void Bestil()
         {
