@@ -46,7 +46,7 @@ namespace BratspilsDepot.Models
         }
         public List<Spil> HentKatalogspil()
         {
-            return Katalog; 
+            return Katalog;
         }
 
 

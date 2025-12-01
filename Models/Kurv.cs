@@ -23,23 +23,22 @@ namespace BratspilsDepot.Models
         {
             varer = new List<Spil>();
             katalog = new SpilKatalog();
-            varer = katalog.HentKatalogspil();
+            
         }
         public void LægIKurv(int Id)
         {
-           
-           for (int i = 0; i <varer.Count; i++ )// får counter med. tæller hvor mange gange vi kører igennem.
+            List<Spil> localKatalog = katalog.HentKatalogspil();
+            for (int i = 0; i < localKatalog.Count; i++) 
             { 
-                if (varer[i].SpilId == Id)
+                if (localKatalog[i].SpilId == Id)
                 {
-                    varer[i].SpilAntal += 1;
-                    break;
+                    varer.Add (localKatalog[i]);
                 }
-            }    
+            }
 
         }
 
-        public void FjernSpil(int Id) // skal ændres i
+        public void FjernSpil(int Id)
         {
             for (int i = 0; i < varer.Count; i++)
             {
@@ -56,17 +55,33 @@ namespace BratspilsDepot.Models
             return varer;
         }
 
+        
         public List<Spil> KurvTilDisplay() 
         {
-            List<Spil> rettekurv = katalog.HentKatalogspil();  
-            for (int i = 0; i < varer.Count; i++)
+            List<Spil> localVarer = varer.ToList();
+            List<Spil> localList=new List<Spil>();
+            for (int j = 0; j < localVarer.Count; j++)
             {
-                if (varer[i].SpilAntal == 0)
+                Spil spil = localVarer[0];
+                localVarer.RemoveAt(0);
+                spil.SpilAntal = 1;
+                localList.Add(spil);
+                j = -1;
+                for (int i = 0; i < localVarer.Count; i++)
                 {
-                    rettekurv.Remove(rettekurv[i]);
+                    if (localVarer[i].SpilId == spil.SpilId)
+                    {
+                        spil.SpilAntal++;
+                        localVarer.RemoveAt(i);
+                    }
                 }
             }
-                return rettekurv;
+            return localList;
+        }
+
+        public void NukeKurv()
+        {
+            varer.Clear();
         }
 
         /// <summary>
@@ -81,6 +96,7 @@ namespace BratspilsDepot.Models
             ordre.Varer = varer;
             ordre.beregnetpris();
             ordre.bekræftOrdre();
+            NukeKurv();
         }
         
     }
