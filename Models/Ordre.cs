@@ -40,27 +40,27 @@ namespace BratspilsDepot.Models
             }
         }
 
-        public List<double> mathhelper(List<Spil> Varer)
-        {
-            List<double> priser = new List<double>();
-            foreach (Spil vare in Varer)
-            {
-                double pris = vare.SpilPris;
-                priser.Add(pris);
-            }
+        //public List<double> mathhelper(List<Spil> Varer)
+        //{
+        //    List<double> priser = new List<double>();
+        //    foreach (Spil vare in Varer)
+        //    {
+        //        double pris = vare.SpilPris;
+        //        priser.Add(pris);
+        //    }
 
-            return priser;
-        }
+        //    return priser;
+        //}
+
         public double beregnetpris()
         {
-            List<double> priser= mathhelper(Varer);
+
             double sum = 0;
-            foreach (double pris in priser)
+            foreach (Spil spil in Varer)
             {
-                sum += pris;
+                sum += spil.SpilPris;
                 //sum = sum + pris;
             }
-            Total = sum;
             return sum;
         }
 

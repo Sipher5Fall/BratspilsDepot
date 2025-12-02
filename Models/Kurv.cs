@@ -94,19 +94,30 @@ namespace BratspilsDepot.Models
             varer.Clear();
         }
 
+        public double beregnetpris()
+        {
+
+            double sum = 0;
+            foreach (Spil spil in varer)
+            {
+                sum += spil.SpilPris;
+                //sum = sum + pris;
+            }
+            return sum;
+        }
+
         /// <summary>
         /// Constructer for vores Bestil klasse.
         /// 
         /// skrevet af Siwakon . 
         /// </summary>
-        public void Bestil()
+        public void Bestil(Ordre ordre)
         {
-            Ordre ordre = new Ordre();
             //ordre.kundeinfo();
             ordre.Varer = varer;
-            ordre.beregnetpris();
+            ordre.Total = ordre.beregnetpris();
             ordre.bekræftOrdre();
-            NukeKurv();
+            //NukeKurv();
         }
         
     }

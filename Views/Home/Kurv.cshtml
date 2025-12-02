@@ -31,8 +31,14 @@
     }
 
     <div>
-        <form action="/Home/BestillingsForm" metode="get">
-            <button class="bestilbtn">Bestil</button>
-        </form>
+        <div>
+                <form action="/Home/BestillingsForm" metode="get">
+              <button class="bestilbtn">Bestil</button>
+            </form>
+         </div>
+
+         <div>
+            @ViewBag.SamletPris
+          </div>
     </div>
 </div>
