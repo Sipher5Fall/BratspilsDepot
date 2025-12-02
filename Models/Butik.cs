@@ -37,16 +37,25 @@ namespace BratspilsDepot.Models
             ordre = new Ordre();
             return ordre;
         }
-        public void Bestil()
+        public void Bestil(Ordre ordre)
         {
-            kurv.Bestil();
+            kurv.Bestil(ordre);
         }
 
         public List<Spil> hentKurv()
         {
             return kurv.KurvTilDisplay();
         }
-            
+           
+        public double SamletPris()
+        {
+            return kurv.beregnetpris();
+        }
+
+        public List<string> Kvittering(Ordre ordre)
+        {
+           return ordrehistorik.EncodeOrdre(ordre);
+        }
     }
 
 }

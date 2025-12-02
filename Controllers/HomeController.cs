@@ -33,6 +33,8 @@ namespace BratspilsDepot.Controllers
         public IActionResult Kurv()
         {
             List<Spil> Kurv = weShop.hentKurv();
+            double samletpris = weShop.SamletPris();
+            ViewBag.SamletPris = samletpris;
             return View((object)Kurv);
         }
 
@@ -55,12 +57,17 @@ namespace BratspilsDepot.Controllers
             return View(); 
         }
 
-        public IActionResult BekræftBestilling(string Navn, string Mail, int TelefonNummer)
+        public IActionResult BekræftBestilling(string KNavn, string KMail, int KTlf)
         {
             Ordre ordre = weShop.LavOrdre();
-            
-            return View();
+            ordre.KundeNavn = KNavn;
+            ordre.KundeMail = KMail;
+            ordre.KundeTlf = KTlf;
+            weShop.Bestil(ordre);
+            List<string> Kvittering = weShop.Kvittering(ordre);
+            return View(Kvittering);
         }
+
 
 
 
