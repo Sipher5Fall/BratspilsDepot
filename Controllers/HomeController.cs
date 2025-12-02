@@ -42,6 +42,8 @@ namespace BratspilsDepot.Controllers
         {
             weShop.LægIKurv(id);
             List<Spil> Kurv = weShop.hentKurv();
+            double samletpris = weShop.SamletPris();
+            ViewBag.SamletPris = samletpris;
             return View("Kurv",(object)Kurv); 
         }
 
@@ -49,6 +51,8 @@ namespace BratspilsDepot.Controllers
         {
             weShop.FjernFraKurv(id);
             List<Spil> Kurv = weShop.hentKurv();
+            double samletpris = weShop.SamletPris();
+            ViewBag.SamletPris = samletpris;
             return View("Kurv", (object)Kurv);
         }
 

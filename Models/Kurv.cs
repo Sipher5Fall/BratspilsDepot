@@ -100,7 +100,7 @@ namespace BratspilsDepot.Models
             double sum = 0;
             foreach (Spil spil in varer)
             {
-                sum += spil.SpilPris;
+                sum += spil.SpilPris*spil.SpilAntal;
                 //sum = sum + pris;
             }
             return sum;
