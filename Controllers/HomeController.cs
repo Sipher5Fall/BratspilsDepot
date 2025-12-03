@@ -1,6 +1,8 @@
 using BratspilsDepot.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using BratspilsDepot.Helpers;
+using System.Net.WebSockets;
 
 namespace BratspilsDepot.Controllers
 {
@@ -33,6 +35,7 @@ namespace BratspilsDepot.Controllers
         public IActionResult Kurv()
         {
             List<Spil> Kurv = weShop.hentKurv();
+            //var beregnetPris = new BeregnetPris { Varer = Kurv };
             double samletpris = weShop.SamletPris();
             ViewBag.SamletPris = samletpris;
             return View((object)Kurv);

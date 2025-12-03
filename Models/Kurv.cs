@@ -1,8 +1,10 @@
-﻿using BratspilsDepot.Models;
+﻿using BratspilsDepot.Helpers;
+using BratspilsDepot.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using BratspilsDepot.Helpers;
 
 
 /// <summary>
@@ -94,17 +96,17 @@ namespace BratspilsDepot.Models
             varer.Clear();
         }
 
-        public double beregnetpris()
-        {
+        //public double beregnetpris()
+        //{
 
-            double sum = 0;
-            foreach (Spil spil in varer)
-            {
-                sum += spil.SpilPris*spil.SpilAntal;
-                //sum = sum + pris;
-            }
-            return sum;
-        }
+        //    double sum = 0;
+        //    foreach (Spil spil in varer)
+        //    {
+        //        sum += spil.SpilPris*spil.SpilAntal;
+        //        //sum = sum + pris;
+        //    }
+        //    return sum;
+        //}
 
         /// <summary>
         /// Constructer for vores Bestil klasse.
@@ -115,9 +117,9 @@ namespace BratspilsDepot.Models
         {
             //ordre.kundeinfo();
             ordre.Varer = varer;
-            ordre.Total = ordre.beregnetpris();
+            ordre.Total = BeregnetPris.Beregnpris(varer);
             ordre.bekræftOrdre();
-            //NukeKurv();
+            //NukeKurv(); 
         }
         
     }

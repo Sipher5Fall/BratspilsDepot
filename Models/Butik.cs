@@ -1,4 +1,5 @@
-﻿using BratspilsDepot.Models;
+﻿using BratspilsDepot.Helpers;
+using BratspilsDepot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +50,7 @@ namespace BratspilsDepot.Models
            
         public double SamletPris()
         {
-            return kurv.beregnetpris();
+            return BeregnetPris.Beregnpris(kurv.KurvTilDisplay());
         }
 
         public List<string> Kvittering(Ordre ordre)
