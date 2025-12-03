@@ -57,6 +57,12 @@ namespace BratspilsDepot.Controllers
             return View(); 
         }
 
+        public IActionResult OrdreHistorik()
+        {
+            List<Ordre> OrdreHistorik = weShop.HentOrdreHistorik();
+            return View((object)OrdreHistorik);
+        }
+
         public IActionResult BekræftBestilling(string KNavn, string KMail, int KTlf)
         {
             Ordre ordre = weShop.LavOrdre();
@@ -64,6 +70,7 @@ namespace BratspilsDepot.Controllers
             ordre.KundeMail = KMail;
             ordre.KundeTlf = KTlf;
             weShop.Bestil(ordre);
+            weShop.ArkiverOrdre(ordre);
             List<string> Kvittering = weShop.Kvittering(ordre);
             return View(Kvittering);
         }

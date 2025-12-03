@@ -56,6 +56,16 @@ namespace BratspilsDepot.Models
         {
            return ordrehistorik.EncodeOrdre(ordre);
         }
+
+        public void ArkiverOrdre(Ordre ordre)
+        {
+            ordrehistorik.ArkiverOrdre(ordre);
+        }
+
+        public List<Ordre> HentOrdreHistorik()
+        {
+            return ordrehistorik.HentOrdreFraArkiv();
+        }
     }
 
 }

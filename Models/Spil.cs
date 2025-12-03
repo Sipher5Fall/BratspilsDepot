@@ -60,11 +60,27 @@
             SpilAntal = 0;
         }
 
+        //Overload for at konstruerer Spil for OrdreHistorik
+        public Spil(string navn, int id, double pris, string kategori, string billedstiC, string billedstifuld, int antal)
+        {
+            SpilNavn = navn;
+            SpilId = id;
+            SpilPris = pris;
+            SpilKategori = kategori;
+            SpilBilledStiC = billedstiC;
+            SpilBilledStiFuld = billedstifuld;
+            SpilAntal = antal;
+        }
+
         public string SpilInfo()
         {
             return $"Navn: {SpilNavn} Id: {SpilId} Pris: {SpilPris} Kategori: {SpilKategori}";
         }
-        
+
+        public string SpilTilString()
+        {
+            return $"{SpilNavn};{SpilId};{SpilPris};{SpilKategori};{SpilBilledStiC};{SpilBilledStiFuld};{SpilAntal}";
+        }
 
     }
 }
