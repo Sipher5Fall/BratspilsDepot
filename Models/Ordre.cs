@@ -17,7 +17,7 @@ namespace BratspilsDepot.Models
         public Ordre() { Varer.Add(spil); }
         */
         private int ordreId;
-        public int OrdreId { get { return ordreId; } }
+        public int OrdreId { get { return ordreId; } set { ordreId = value; } }
         public string KundeNavn { get; set; }
         public string KundeMail { get; set; }
         public int KundeTlf { get; set; }
