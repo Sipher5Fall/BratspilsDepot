@@ -52,17 +52,17 @@ namespace BratspilsDepot.Models
         //    return priser;
         //}
 
-        public double beregnetpris()
-        {
+        //public double beregnetpris()
+        //{
 
-            double sum = 0;
-            foreach (Spil spil in Varer)
-            {
-                sum += spil.SpilPris * spil.SpilAntal;
-                //sum = sum + pris;
-            }
-            return sum;
-        }
+        //    double sum = 0;
+        //    foreach (Spil spil in Varer)
+        //    {
+        //        sum += spil.SpilPris * spil.SpilAntal;
+        //        //sum = sum + pris;
+        //    }
+        //    return sum;
+        //}
 
         public void bekræftOrdre()
         {
