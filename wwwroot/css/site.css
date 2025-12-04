@@ -117,6 +117,21 @@ body {
     font-size: 10px;
     
 }
+.minbtn {
+    background-color: seagreen;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 10px;
+}
+.bestil-btn {
+    position: absolute;
+    left: 69%;
+    background-color: seagreen;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
 
 .historik-container {
     border: 2px solid;
