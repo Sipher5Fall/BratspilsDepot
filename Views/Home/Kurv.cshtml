@@ -1,43 +1,54 @@
 ﻿@model List<Spil>
 
-    <div>
+ <html>
+
+     <body>
+    
     @for (int i = 0; i < Model.Count; i++)
     {
 
         <div class = "Kurv-item">
 
-            <div class = "Kurv-img" style="display:inline"  >
-                <img src ="@Model[i].SpilBilledStiFuld"/>
+
+            <div class="Kurv-img">
+              
+                    <img src ="@Model[i].SpilBilledStiFuld" height="100"/>
+            
             </div>
 
-            <div class="Title" style="display:inline">
+            <div class="Title">
                 @Model[i].SpilNavn
                
             </div>
 
-            <div class="Pris" style="display:inline">
-                @Model[i].SpilPris
+            <div class="Pris" >
+                @Model[i].SpilPris kr
             </div>
 
-            <div class="Antal" style="display:inline">
+            <div class="Antal" >
                <form action="/Home/PlusIKurv" metode="get"><input type="hidden" name="Id" value="@Model[i].SpilId" /><button class="plusbtn">+</button></form>
                @Model[i].SpilAntal
               <form action="/Home/MinusIKurv" metode="get"><input type="hidden" name="Id" value="@Model[i].SpilId" /> <button class="minbtn">-</button></form>
 
             </div>
-            </div>
 
+        </div>
+        <br>
+        <br>
     }
 
     <div>
         <div>
-                <form action="/Home/BestillingsForm" metode="get">
-              <button class="bestilbtn">Bestil</button>
+            <form action="/Home/BestillingsForm" metode="get">
+              <button class="bestil-btn">Bestil</button>
             </form>
          </div>
 
-         <div>
-            @ViewBag.SamletPris
+         <div class="Pris">
+            @Math.Round(ViewBag.SamletPris,2) kr
           </div>
     </div>
-</div>
+    <br>
+    <br>
+    </body>
+ </html>

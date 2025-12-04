@@ -23,12 +23,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Produkter</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Kurv">Kurv</a>
                         </li>
+
                     </ul>
                     <form action="/Home/Søg" method="get">
                         <input type="text" name="kategori" placeholder=" Søg kategori...">
@@ -47,7 +46,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - BratspilsDepot - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - BratspilsDepot - <a asp-area="" asp-controller="Home" asp-action="Privacy">Admin</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

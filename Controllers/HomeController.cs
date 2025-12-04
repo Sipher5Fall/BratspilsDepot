@@ -11,7 +11,7 @@ namespace BratspilsDepot.Controllers
         private readonly object context;
         private static Butik weShop;
         private List<Spil> katalog;
-        public HomeController(ILogger<HomeController> logger) //hver gang IactionResult kører, kører den gennem loggeren. koden kørers igen. 
+        public HomeController(ILogger<HomeController> logger) //hver gang IactionResult kÃ¸rer, kÃ¸rer den gennem loggeren. koden kÃ¸rers igen. 
         {
             _logger = logger;
             weShop = new Butik();
@@ -24,7 +24,7 @@ namespace BratspilsDepot.Controllers
         }
         public IActionResult PutIkurven(int Id)
         {
-            weShop.LægIKurv(Id);
+            weShop.LÃ¦gIKurv(Id);
             return View("Index", (object)katalog);
         }
         public IActionResult Privacy()
@@ -43,7 +43,7 @@ namespace BratspilsDepot.Controllers
 
         public IActionResult PlusIKurv(int id)
         {
-            weShop.LægIKurv(id);
+            weShop.LÃ¦gIKurv(id);
             List<Spil> Kurv = weShop.hentKurv();
             double samletpris = weShop.SamletPris();
             ViewBag.SamletPris = samletpris;
@@ -58,7 +58,7 @@ namespace BratspilsDepot.Controllers
             ViewBag.SamletPris = samletpris;
             return View("Kurv", (object)Kurv);
         }
-
+        
         public IActionResult BestillingsForm()
         {
             return View();
@@ -67,10 +67,10 @@ namespace BratspilsDepot.Controllers
         public IActionResult OrdreHistorik()
         {
             List<Ordre> OrdreHistorik = weShop.HentOrdreHistorik();
-            return View((object)OrdreHistorik);
+            return View(OrdreHistorik);
         }
 
-        public IActionResult BekræftBestilling(string KNavn, string KMail, int KTlf)
+        public IActionResult BekrÃ¦ftBestilling(string KNavn, string KMail, int KTlf)
         {
             Ordre ordre = weShop.LavOrdre();
             ordre.KundeNavn = KNavn;
@@ -81,18 +81,30 @@ namespace BratspilsDepot.Controllers
             List<string> Kvittering = weShop.Kvittering(ordre);
             return View(Kvittering);
         }
-        public ActionResult Søg(string kategori)
+        public ActionResult SÃ¸g(string kategori)
+
+        [HttpPost]
+        public IActionResult VisOrdre(int ordreID)
+        {
+            List<Ordre> OrdreHistorik = weShop.HentOrdreHistorik();
+            ViewBag.OrdreID = ordreID;
+            return View((object)OrdreHistorik);
+        }
+
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
         {
             SpilKatalog katalog = new SpilKatalog();   
             List<Spil> alleSpil = katalog.HentKatalogspil();  
-            List<Spil> SøgeFelt = new List<Spil>();  
+            List<Spil> SÃ¸geFelt = new List<Spil>();  
 
             foreach (Spil spil in alleSpil)
                 if (spil.SpilKategori.Contains(kategori))
                 {
-                SøgeFelt.Add(spil);
+                SÃ¸geFelt.Add(spil);
                 }
-            return View("Index", SøgeFelt);
+            return View("Index", SÃ¸geFelt);
         }
     }
 }
