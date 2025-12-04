@@ -83,16 +83,21 @@ namespace BratspilsDepot.Controllers
         }
         public ActionResult Søg(string kategori)
         {
-            SpilKatalog katalog = new SpilKatalog();
-            List<Spil> alleSpil = katalog.HentKatalogspil();
+
+            List<Spil> alleSpil = weShop.SeKatalog();
             List<Spil> Søgefelt = new List<Spil>();
 
-            foreach(Spil spil in alleSpil)
-                if(spil.SpilKategori.Contains(kategori))
+            for (int i = 0; i < alleSpil.Count; i++)
             {
-                    Søgefelt.Add(spil);
+                string spilKatagorier = alleSpil[i].SpilKategori.ToLower();
+
+                if (spilKatagorier.Contains(kategori.ToLower()))
+                {
+                    Søgefelt.Add(alleSpil[i]);
+                }
             }
-            return View("Index",Søgefelt); 
+            return View("Index", Søgefelt);
+            
         }
 
         [HttpPost]
