@@ -31,11 +31,27 @@ namespace BratspilsDepot.Models
         public string bestillingsdato;
         public Ordre()
         {
+            OrdreId = HentOrdreId();
+            OrdreId++;
+            GemOrdreId(OrdreId);
+
             Varer = new List<Spil>();
             bestillingsdato = dato();
         }
 
-        
+        public void GemOrdreId(int ordreID)
+        {
+            List<string> OrdreTæller = new List<string>();
+            OrdreTæller.Add(ordreId.ToString());
+
+            FileIO.Log(OrdreTæller, "/OrdreID");
+        }
+
+        public int HentOrdreId()
+        {
+            int ordreID = FileIO.ReadOrdreId("/OrdreID");
+            return ordreID;
+        }
         public void printOrdre(List<string[]> Varer)
         {
             foreach (var vare in Varer)
