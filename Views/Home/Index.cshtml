@@ -16,9 +16,13 @@
     }
 </style>
 
- 
+    <form action="/Home/Søg" method="get">
+        <input type="text" name="kategori" placeholder=" Søg kategori...">
+        <button type="submit">Søg</button>
+    </form>
 
 <body>
+
 
 <div class="card-columns">
 @foreach (Spil spil in Model)
