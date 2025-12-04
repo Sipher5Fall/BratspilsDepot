@@ -13,6 +13,7 @@ namespace BratspilsDepot.Helpers
                 sum += spil.SpilPris * spil.SpilAntal;
                 //sum = sum + pris;
             }
+
             return sum;
         }
     }

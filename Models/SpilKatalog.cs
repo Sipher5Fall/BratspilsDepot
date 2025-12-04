@@ -1,6 +1,7 @@
 ﻿using System.IO;
 
 
+
 namespace BratspilsDepot.Models
 {
     public class SpilKatalog
@@ -54,6 +55,7 @@ namespace BratspilsDepot.Models
         {
             return Katalog;
         }
-  
+
     }
+    
 }

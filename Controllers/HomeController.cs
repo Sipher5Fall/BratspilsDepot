@@ -2,13 +2,13 @@ using BratspilsDepot.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using BratspilsDepot.Helpers;
-using System.Net.WebSockets;
 
 namespace BratspilsDepot.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly object context;
         private static Butik weShop;
         private List<Spil> katalog;
         public HomeController(ILogger<HomeController> logger) //hver gang IactionResult kører, kører den gennem loggeren. koden kørers igen. 
@@ -25,7 +25,7 @@ namespace BratspilsDepot.Controllers
         public IActionResult PutIkurven(int Id)
         {
             weShop.LægIKurv(Id);
-            return View("Index", (object)katalog);     
+            return View("Index", (object)katalog);
         }
         public IActionResult Privacy()
         {
@@ -47,7 +47,7 @@ namespace BratspilsDepot.Controllers
             List<Spil> Kurv = weShop.hentKurv();
             double samletpris = weShop.SamletPris();
             ViewBag.SamletPris = samletpris;
-            return View("Kurv",(object)Kurv); 
+            return View("Kurv", (object)Kurv);
         }
 
         public IActionResult MinusIKurv(int id)
@@ -61,7 +61,7 @@ namespace BratspilsDepot.Controllers
 
         public IActionResult BestillingsForm()
         {
-            return View(); 
+            return View();
         }
 
         public IActionResult OrdreHistorik()
@@ -81,15 +81,18 @@ namespace BratspilsDepot.Controllers
             List<string> Kvittering = weShop.Kvittering(ordre);
             return View(Kvittering);
         }
-
-
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public ActionResult Søg(string kategori)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            SpilKatalog katalog = new SpilKatalog();   
+            List<Spil> alleSpil = katalog.HentKatalogspil();  
+            List<Spil> SøgeFelt = new List<Spil>();  
+
+            foreach (Spil spil in alleSpil)
+                if (spil.SpilKategori.Contains(kategori))
+                {
+                SøgeFelt.Add(spil);
+                }
+            return View("Index", SøgeFelt);
         }
-        
     }
 }

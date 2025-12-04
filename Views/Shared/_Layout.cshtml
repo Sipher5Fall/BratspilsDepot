@@ -30,6 +30,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Kurv">Kurv</a>
                         </li>
                     </ul>
+                    <form action="/Home/Søg" method="get">
+                        <input type="text" name="kategori" placeholder=" Søg kategori...">
+                        <button type="submit">Søg</button> 
+                    </form>
+                    </div>
                 </div>
             </div>
         </nav>

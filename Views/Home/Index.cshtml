@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 @model List<Spil> //forvent List<string[]> type
 
+
+
 <style>
     div.card-columns {
         width:100%;
@@ -14,8 +16,10 @@
     }
 </style>
 
+ 
 
 <body>
+
 <div class="card-columns">
 @foreach (Spil spil in Model)
 {
@@ -36,6 +40,8 @@
                 <p class="card-info"><div class="card-details" style="float:left">@($"Pris: {spil.SpilPris}")</div><div class="card-details" style="float:right">@($"Kategori: {spil.SpilKategori}")</div></p>                                       
             </div>
             <img src="@spil.SpilBilledStiC" />
+        </div>
+        <div>
         </div>
     </div>
 }
