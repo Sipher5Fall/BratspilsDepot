@@ -82,6 +82,18 @@ namespace BratspilsDepot.Controllers
             return View(Kvittering);
         }
         public ActionResult Søg(string kategori)
+        {
+            SpilKatalog katalog = new SpilKatalog();
+            List<Spil> alleSpil = katalog.HentKatalogspil();
+            List<Spil> Søgefelt = new List<Spil>();
+
+            foreach(Spil spil in alleSpil)
+                if(spil.SpilKategori.Contains(kategori))
+            {
+                    Søgefelt.Add(spil);
+            }
+            return View("Index",Søgefelt); 
+        }
 
         [HttpPost]
         public IActionResult VisOrdre(int ordreID)
@@ -95,16 +107,7 @@ namespace BratspilsDepot.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            SpilKatalog katalog = new SpilKatalog();   
-            List<Spil> alleSpil = katalog.HentKatalogspil();  
-            List<Spil> SøgeFelt = new List<Spil>();  
-
-            foreach (Spil spil in alleSpil)
-                if (spil.SpilKategori.Contains(kategori))
-                {
-                SøgeFelt.Add(spil);
-                }
-            return View("Index", SøgeFelt);
+            return View();
         }
     }
 }
