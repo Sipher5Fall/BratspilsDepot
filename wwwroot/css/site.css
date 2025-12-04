@@ -84,11 +84,38 @@ body {
 }
 
 .Kurv-item {
-
+    
 }
 
-.Kurv-img{
-    height:100%;
+.Kurv-img {
+    
+    position: absolute;
+    left: 30%;
+}
+
+.Title {
+    position: absolute;
+    left: 40%;
+}
+
+
+.Pris {
+    position: absolute;
+    left: 60%
+}
+
+.Antal {
+    position: relative;
+    left: 23%
+}
+
+.plusbtn {
+    background-color: seagreen;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 10px;
+    
 }
 
 .historik-container {
