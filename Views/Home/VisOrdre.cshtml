@@ -1,0 +1,72 @@
+﻿@model List<Ordre>
+<style>
+	.ordre-container {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 10% 30% 25% 20% 15%
+	}
+
+	.ospil-container {
+		width:100%;
+		display:grid;
+		grid-template-columns: 20% 20% 20% 20% 20%
+	}
+</style>
+
+@for (int i = 0; i < Model.Count; i++)
+{
+	if(Model[i].OrdreId == ViewBag.OrdreID)
+	{
+		<div class="ordre-container">
+
+			<div class="ordre-id">
+				Ordrenr: @Model[i].OrdreId
+			</div>
+
+			<div class="ordre-dato">
+				@Model[i].bestillingsdato
+			</div> 
+
+			<div class="ordre-navn">
+				Kunde navn:@Model[i].KundeNavn
+			</div>
+
+			<div class="ordre-mail">
+				Kunde e-mail: @Model[i].KundeMail
+			</div> 
+
+			<div class="ordre-telefon">
+				Kunde tlf: @Model[i].KundeTlf
+			</div>
+
+		</div>
+		<br />
+		@foreach (Spil spil in Model[i].Varer)
+		{
+			<div class="ospil-container">
+
+				<div class="ospil-navn">
+					Spil: @spil.SpilNavn
+				</div>
+
+				<div class="ospil-id">
+					ID: @spil.SpilId
+				</div>
+
+				<div class="ospil-pris">
+					Pris: kr. @spil.SpilPris,- 
+				</div>
+
+				<div class="ospil-kategori">
+					Kategori: @spil.SpilKategori
+				</div>
+				 
+				<div class="ospil-antal">
+					Antal: @spil.SpilAntal
+				</div>
+
+			</div>
+		}
+		break;
+	}
+}

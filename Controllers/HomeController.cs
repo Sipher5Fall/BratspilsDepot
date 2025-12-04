@@ -58,7 +58,7 @@ namespace BratspilsDepot.Controllers
             ViewBag.SamletPris = samletpris;
             return View("Kurv", (object)Kurv);
         }
-
+        
         public IActionResult BestillingsForm()
         {
             return View(); 
@@ -67,7 +67,7 @@ namespace BratspilsDepot.Controllers
         public IActionResult OrdreHistorik()
         {
             List<Ordre> OrdreHistorik = weShop.HentOrdreHistorik();
-            return View((object)OrdreHistorik);
+            return View(OrdreHistorik);
         }
 
         public IActionResult BekræftBestilling(string KNavn, string KMail, int KTlf)
@@ -82,7 +82,13 @@ namespace BratspilsDepot.Controllers
             return View(Kvittering);
         }
 
-
+        [HttpPost]
+        public IActionResult VisOrdre(int ordreID)
+        {
+            List<Ordre> OrdreHistorik = weShop.HentOrdreHistorik();
+            ViewBag.OrdreID = ordreID;
+            return View((object)OrdreHistorik);
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

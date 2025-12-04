@@ -118,23 +118,91 @@ body {
     
 }
 
-.minbtn {
-    background-color: seagreen;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    font-size: 10px;
+.historik-container {
+    border: 2px solid;
+    border-radius:5px;
+    border-color:darkolivegreen;
+    opacity:0.6;
+    margin: 5px;
+    background-color:white;
 }
 
-.bestil-btn {
-    position: absolute;
-    left: 65%;
-    background-color: seagreen;
-    color: white;
-    border-radius: 5px;
-    border: none;
+.historik-container:hover {
+    opacity:1;
 }
 
+.historik-id {
+    margin-left:5px;
+    text-align:left;
+}
+
+.historik-dato {
+    text-align:left;    
+}
+
+.historik-navn{
+    text-align:right;
+    margin-right:10px;
+}
+
+.historik-mail {
+    text-align:right;
+    margin-right:10px;
+}
+
+.ordre-container {
+     border: 2px solid darkgray;
+}
+
+.ordre-id {
+    margin-left:10px;
+    text-align:left;
+}
+
+.ordre-dato {
+    text-align:left;
+}
+
+.ordre-navn {
+    text-align:left;
+}
+
+.ordre-mail {
+    text-align:left;
+}
+
+.ordre-telefon {
+    margin-right: 10px;
+    text-align:right;
+}
+
+.ospil-container {
+    border: 2px solid darkgray;
+    background-color:rgba(180, 180, 180, 0.4);
+    margin:5px 0px 5px 0px;
+}
+
+.ospil-navn {
+    text-align:left;
+    margin-left:5px;
+}
+
+.ospil-id {
+    text-align:left;
+}
+
+.ospil-pris {
+    text-align:left;
+}
+
+.ospil-kategori {
+    text-align:left;
+}
+
+.ospil-antal {
+    text-align:right;
+    margin-right:5px;
+}
 /* test kode fra ASP.NET tutorial */
 /*
 .card-columns .card:hover .card-img {
