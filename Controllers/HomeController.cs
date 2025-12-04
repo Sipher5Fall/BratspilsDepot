@@ -2,16 +2,16 @@ using BratspilsDepot.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using BratspilsDepot.Helpers;
-using System.Net.WebSockets;
 
 namespace BratspilsDepot.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly object context;
         private static Butik weShop;
         private List<Spil> katalog;
-        public HomeController(ILogger<HomeController> logger) //hver gang IactionResult kører, kører den gennem loggeren. koden kørers igen. 
+        public HomeController(ILogger<HomeController> logger) //hver gang IactionResult kÃ¸rer, kÃ¸rer den gennem loggeren. koden kÃ¸rers igen. 
         {
             _logger = logger;
             weShop = new Butik();
@@ -24,8 +24,8 @@ namespace BratspilsDepot.Controllers
         }
         public IActionResult PutIkurven(int Id)
         {
-            weShop.LægIKurv(Id);
-            return View("Index", (object)katalog);     
+            weShop.LÃ¦gIKurv(Id);
+            return View("Index", (object)katalog);
         }
         public IActionResult Privacy()
         {
@@ -43,11 +43,11 @@ namespace BratspilsDepot.Controllers
 
         public IActionResult PlusIKurv(int id)
         {
-            weShop.LægIKurv(id);
+            weShop.LÃ¦gIKurv(id);
             List<Spil> Kurv = weShop.hentKurv();
             double samletpris = weShop.SamletPris();
             ViewBag.SamletPris = samletpris;
-            return View("Kurv",(object)Kurv); 
+            return View("Kurv", (object)Kurv);
         }
 
         public IActionResult MinusIKurv(int id)
@@ -61,7 +61,7 @@ namespace BratspilsDepot.Controllers
         
         public IActionResult BestillingsForm()
         {
-            return View(); 
+            return View();
         }
 
         public IActionResult OrdreHistorik()
@@ -70,7 +70,7 @@ namespace BratspilsDepot.Controllers
             return View(OrdreHistorik);
         }
 
-        public IActionResult BekræftBestilling(string KNavn, string KMail, int KTlf)
+        public IActionResult BekrÃ¦ftBestilling(string KNavn, string KMail, int KTlf)
         {
             Ordre ordre = weShop.LavOrdre();
             ordre.KundeNavn = KNavn;
@@ -81,6 +81,7 @@ namespace BratspilsDepot.Controllers
             List<string> Kvittering = weShop.Kvittering(ordre);
             return View(Kvittering);
         }
+        public ActionResult SÃ¸g(string kategori)
 
         [HttpPost]
         public IActionResult VisOrdre(int ordreID)
@@ -94,8 +95,16 @@ namespace BratspilsDepot.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            SpilKatalog katalog = new SpilKatalog();   
+            List<Spil> alleSpil = katalog.HentKatalogspil();  
+            List<Spil> SÃ¸geFelt = new List<Spil>();  
+
+            foreach (Spil spil in alleSpil)
+                if (spil.SpilKategori.Contains(kategori))
+                {
+                SÃ¸geFelt.Add(spil);
+                }
+            return View("Index", SÃ¸geFelt);
         }
-        
     }
 }
