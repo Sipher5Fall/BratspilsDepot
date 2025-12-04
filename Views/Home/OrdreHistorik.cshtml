@@ -1,2 +1,28 @@
 ﻿@model List<Ordre>
+<style>
+	.historik-container {
+		width:100%;
+		display:grid;
+		grid-template-columns: 10% 40% 25% 25%
+	}
+	
+</style>
 
+@foreach (Ordre ordre in Model)
+{
+	<form asp-action="VisOrdre" method="post">
+		<input type="hidden" name="OrdreID" value="@ordre.OrdreId"/>
+		<button class="historik-container">
+		
+			<div class="historik-id">@ordre.OrdreId</div>
+
+			<div class="historik-dato">@ordre.bestillingsdato</div>
+
+			<div class="historik-navn">@ordre.KundeNavn</div>
+
+			<div class="historik-mail">@ordre.KundeMail</div>
+							
+		</button>
+	</form>
+	
+}	

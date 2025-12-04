@@ -1,5 +1,6 @@
 ﻿using BratspilsDepot.Models;
 using Microsoft.VisualBasic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BratspilsDepot.Models
 {
@@ -18,8 +19,11 @@ namespace BratspilsDepot.Models
         */
         private int ordreId;
         public int OrdreId { get { return ordreId; } set { ordreId = value; } }
+
         public string KundeNavn { get; set; }
+
         public string KundeMail { get; set; }
+
         public int KundeTlf { get; set; }
         public List<Spil> Varer { get; set; }
 
