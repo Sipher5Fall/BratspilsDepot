@@ -39,13 +39,48 @@ public static class FileIO
 		//bool værdien til sidst betyder at vi appender til filen, ikke overskriver.
 		using (StreamWriter writer = new StreamWriter(filsti + ".txt", true))
 		{
-			foreach (string line in lines)
+			try
 			{
-				writer.WriteLine(line);
+				foreach (string line in lines)
+				{
+					writer.WriteLine(line);
+				}
 			}
-
+			catch (Exception e)
+			{
+				LogError(e.Message, "/ErrorLog");
+			}
 		}
 	}
+
+	public static void LogOrdreId(int ordreID, string filnavn)
+	{
+		string root = GetRoot();
+		string filsti = root + filnavn;
+
+		using (StreamWriter writer = new StreamWriter(filsti + ".txt"))
+		{
+			try
+			{
+				writer.WriteLine(ordreID);
+			}
+			catch (Exception e)
+			{
+                LogError(e.Message, "/ErrorLog");
+            }
+		}
+	}
+
+	public static void LogError(string message, string filnavn)
+	{
+        string root = GetRoot();
+        string filsti = root + filnavn;
+
+		using (StreamWriter writer = new StreamWriter(filsti+".txt"))
+		{
+			writer.WriteLine(message, true); 
+		}
+    }
 
 	/*
 	 *		Read læser en fil en linje af gangen, og returner en liste
@@ -66,14 +101,52 @@ public static class FileIO
 		//her læser vi filen en linje af gange, og adder line til listen lines
 		using (StreamReader reader = new StreamReader(filsti+".txt"))
 		{
-			while((line = reader.ReadLine()) != null)
+			try
 			{
-				lines.Add(line);
+				while((line = reader.ReadLine()) != null)
+				{
+					lines.Add(line);
+				}
 			}
+			catch (Exception e)
+			{
+                LogError(e.Message, "/ErrorLog");
+            }
 		}
 
 		return lines;
 	}
+
+	public static int ReadOrdreId(string filNavn)
+	{
+        string root = GetRoot();
+        string filsti = root + filNavn;
+        //vi laver en liste af strings
+        
+
+        //vi laver en string som vi overskriver for hver linje af filen
+        string line = "";
+		int ordreID = 0;
+
+        //her læser vi filen en linje af gange, og adder line til listen lines
+        using (StreamReader reader = new StreamReader(filsti + ".txt"))
+        {
+			try
+			{
+				while ((line = reader.ReadLine()) != null)
+				{
+					ordreID = Convert.ToInt32(line);
+				}
+			}
+			catch(Exception e)
+			{
+                LogError(e.Message, "/ErrorLog");
+            }
+        }
+
+		return ordreID;
+    }
+
 
 
 }

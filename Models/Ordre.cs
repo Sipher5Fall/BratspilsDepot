@@ -26,6 +26,10 @@ namespace BratspilsDepot.Models
         public string bestillingsdato;
         public Ordre()
         {
+            OrdreId = HentOrdreId();
+            OrdreId++;
+            GemOrdreId(OrdreId);
+
             Varer = new List<Spil>();
             bestillingsdato = dato();
         }
