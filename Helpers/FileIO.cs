@@ -3,7 +3,11 @@
 
 public static class FileIO
 {
-	public static string GetRoot()
+    /*
+	*  Forfatter: Mikkel
+	*  
+	*/
+    public static string GetRoot()
 	{
 		//Vi laver en string der har den filsti vi arbejder i
 		string rootSti = AppDomain.CurrentDomain.BaseDirectory;

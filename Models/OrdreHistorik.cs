@@ -2,6 +2,10 @@
 
 namespace BratspilsDepot.Models
 {
+    /*
+    *  Forfatter: Mikkel
+    *  
+    */
     public class OrdreHistorik
     {
         private List<Ordre> ordreHistorik;
@@ -11,13 +15,8 @@ namespace BratspilsDepot.Models
             ordreHistorik = new List<Ordre>();
         }
 
-        public void LogOrdre(Ordre ordre)
-        {
-            ordreHistorik.Add(ordre);
-        }
-
         /*
-         *  Encode Ordre laver en List<sttring> som indeholder
+         *  Encode Ordre laver en List<string> som indeholder
          *  en formateret kvittering for en given ordre. og
          *  returnere det.
          */

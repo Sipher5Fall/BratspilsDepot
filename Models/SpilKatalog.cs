@@ -4,6 +4,10 @@
 
 namespace BratspilsDepot.Models
 {
+    /*
+    *  Forfatter: Henriette
+    *  
+    */
     public class SpilKatalog
     {
         List<string[]> TekstKatalog;

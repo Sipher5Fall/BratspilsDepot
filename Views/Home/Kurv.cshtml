@@ -4,42 +4,51 @@
 
      <body>
     
-    @for (int i = 0; i < Model.Count; i++)
+    @if(Model.Count != 0)
     {
 
-        <div class = "Kurv-item">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+
+            <div class = "Kurv-item">
 
 
-            <div class="Kurv-img">
+                <div class="Kurv-img">
               
-                    <img src ="@Model[i].SpilBilledStiFuld" height="100"/>
+                        <img src ="@Model[i].SpilBilledStiFuld" height="100"/>
             
-            </div>
+                </div>
 
-            <div class="Title">
-                @Model[i].SpilNavn
+                <div class="Title">
+                    @Model[i].SpilNavn
                
+                </div>
+
+                <div class="Pris" >
+                    @Model[i].SpilPris kr
+                </div>
+
+                <div class="Antal" >
+                   <form action="/Home/PlusIKurv" metode="get"><input type="hidden" name="Id" value="@Model[i].SpilId" /><button class="plusbtn">+</button></form>
+                   @Model[i].SpilAntal
+                  <form action="/Home/MinusIKurv" metode="get"><input type="hidden" name="Id" value="@Model[i].SpilId" /> <button class="minbtn">-</button></form>
+
+                </div>
+
             </div>
-
-            <div class="Pris" >
-                Pris pr. stk: @Model[i].SpilPris kr
-            </div>
-
-            <div class="Antal" >
-               <form action="/Home/PlusIKurv" metode="get"><input type="hidden" name="Id" value="@Model[i].SpilId" /><button class="plusbtn">+</button></form>
-               @Model[i].SpilAntal
-              <form action="/Home/MinusIKurv" metode="get"><input type="hidden" name="Id" value="@Model[i].SpilId" /> <button class="minbtn">-</button></form>
-
-            </div>
-
-        </div>
-        <br>
-        <br>
+            <br>
+            <br>
+        }
     }
+    <div>@if (ViewBag.Tomtkurv != null)
+        {
+            @ViewBag.Tomtkurv
+        }
+    </div>
 
     <div>
         <div>
-            <form action="/Home/BestillingsForm" metode="get">
+            <form action="/Home/CheckKurv" metode="get">
               <button class="bestil-btn">Bestil</button>
             </form>
          </div>

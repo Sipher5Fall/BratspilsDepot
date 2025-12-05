@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace BratspilsDepot.Models
 {
+    /*
+     *  Forfatter: Lavet af kollektivet
+     *  
+     */
     internal class Butik
     {
         private OrdreHistorik ordrehistorik;
@@ -66,6 +70,12 @@ namespace BratspilsDepot.Models
         public List<Ordre> HentOrdreHistorik()
         {
             return ordrehistorik.HentOrdreFraArkiv();
+        }
+
+        public Medarbejder LavMedarbejder()
+        {
+            Medarbejder admin = new Medarbejder();
+            return admin;
         }
     }
 
