@@ -7,11 +7,10 @@ using System.Security.Cryptography.X509Certificates;
 using BratspilsDepot.Helpers;
 
 
-/// <summary>
-/// Constructer for vores kurv klasse.
-/// 
-/// skrevet af Ida . 
-/// </summary>
+/*
+ *  Forfatter: Ida
+ *  
+ */
 
 namespace BratspilsDepot.Models
 {
@@ -57,10 +56,7 @@ namespace BratspilsDepot.Models
             }
 
         }
-        public List<Spil> VisKurv()
-        {
-            return varer;
-        }
+
 
         
         public List<Spil> KurvTilDisplay() 
@@ -96,30 +92,12 @@ namespace BratspilsDepot.Models
             varer.Clear();
         }
 
-        //public double beregnetpris()
-        //{
-
-        //    double sum = 0;
-        //    foreach (Spil spil in varer)
-        //    {
-        //        sum += spil.SpilPris*spil.SpilAntal;
-        //        //sum = sum + pris;
-        //    }
-        //    return sum;
-        //}
-
-        /// <summary>
-        /// Constructer for vores Bestil klasse.
-        /// 
-        /// skrevet af Siwakon . 
-        /// </summary>
         public void Bestil(Ordre ordre)
         {
-            //ordre.kundeinfo();
+
             ordre.Varer = varer;
             ordre.Total = BeregnetPris.Beregnpris(varer);
-            ordre.bekræftOrdre();
-            //NukeKurv(); 
+            NukeKurv();
         }
         
     }

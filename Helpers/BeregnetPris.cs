@@ -2,6 +2,10 @@
 
 namespace BratspilsDepot.Helpers
 {
+    /*
+    *  Forfatter: Ida
+    *  
+    */
     public static class BeregnetPris
     {
 

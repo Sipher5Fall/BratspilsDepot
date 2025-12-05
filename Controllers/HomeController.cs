@@ -5,6 +5,10 @@ using BratspilsDepot.Helpers;
 
 namespace BratspilsDepot.Controllers
 {
+    /*
+     *  Forfatter: Lavet af kollektivet
+     *  
+     */
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -29,9 +33,21 @@ namespace BratspilsDepot.Controllers
         }
         public IActionResult Privacy()
         {
-            return View();
+            Medarbejder admin = weShop.LavMedarbejder();
+            return View(admin);
         }
-
+        public IActionResult checklogin(string UserName, string Password)
+        {
+            Medarbejder admin = weShop.LavMedarbejder();
+            if (UserName == admin.Brugernavn && Password == admin.Password)
+            { 
+                return View("OrdreHistorik"); 
+            }
+            else 
+             
+                return View("Privacy"); 
+            
+        }
         public IActionResult Kurv()
         {
             List<Spil> Kurv = weShop.hentKurv();
@@ -94,6 +110,24 @@ namespace BratspilsDepot.Controllers
             }
             return View("Index",Søgefelt); 
         }
+
+        public IActionResult CheckKurv()
+        { 
+            List<Spil> VareCheck = weShop.hentKurv(); 
+            if (VareCheck.Count != 0)
+            { 
+                return View("BestillingsForm"); 
+            }
+            else 
+            {
+                double samletpris = weShop.SamletPris();
+                ViewBag.SamletPris = samletpris;
+                string Tomtkurv = "Kurven er tom";
+                ViewBag.Tomtkurv = Tomtkurv;
+                return View("Kurv", VareCheck); 
+            }
+        }
+
 
         [HttpPost]
         public IActionResult VisOrdre(int ordreID)

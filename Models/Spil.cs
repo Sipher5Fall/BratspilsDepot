@@ -1,5 +1,9 @@
 ﻿namespace BratspilsDepot.Models
 {
+    /*
+     *  Forfatter: Henriette
+     *  
+     */
     public class Spil
     {
         private string spilNavn;
@@ -70,11 +74,6 @@
             SpilBilledStiC = billedstiC;
             SpilBilledStiFuld = billedstifuld;
             SpilAntal = antal;
-        }
-
-        public string SpilInfo()
-        {
-            return $"Navn: {SpilNavn} Id: {SpilId} Pris: {SpilPris} Kategori: {SpilKategori}";
         }
 
         public string SpilTilString()
