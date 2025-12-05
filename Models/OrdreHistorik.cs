@@ -98,37 +98,44 @@ namespace BratspilsDepot.Models
                     //Her laver vi SplitForData, som splitter hver index i SplitForSpil, så vi nu kan bruge de data
                     string[] SplitForData = SplitForSpil[j].Split(";");
 
-                    if(j==0) 
+                    try
                     {
-                        //Hvis vi er på index 0 er vi i OrdreData, og vi bruger disse til at udfylde den ordre vi
-                        // initialiserede i det ydre for loop
+                        if (j == 0)
+                        {
+                            //Hvis vi er på index 0 er vi i OrdreData, og vi bruger disse til at udfylde den ordre vi
+                            // initialiserede i det ydre for loop
 
-                        ordre.OrdreId = Convert.ToInt32(SplitForData[0]);
-                        ordre.KundeNavn = SplitForData[1];
-                        ordre.KundeMail = SplitForData[2];
-                        ordre.KundeTlf = Convert.ToInt32(SplitForData[3]);
-                        ordre.Total = Convert.ToDouble(SplitForData[4]);
-                        ordre.bestillingsdato = SplitForData[5];
+                            ordre.OrdreId = Convert.ToInt32(SplitForData[0]);
+                            ordre.KundeNavn = SplitForData[1];
+                            ordre.KundeMail = SplitForData[2];
+                            ordre.KundeTlf = Convert.ToInt32(SplitForData[3]);
+                            ordre.Total = Convert.ToDouble(SplitForData[4]);
+                            ordre.bestillingsdato = SplitForData[5];
+                        }
+                        else
+                        {
+                            //Hvis ikke vi er i index 0 er vi i SpilData, og det bruger vi til at initialisere et spil objekt,
+                            //som kan tilføjes til ordrens Varer liste. Det er vigtigt at vide at vi første initialisere variabler
+                            //med data, så vi kan bruge den originale constructor i Spil klassen.
+
+                            string Navn = SplitForData[0];
+                            int Id = Convert.ToInt32(SplitForData[1]);
+                            double Pris = Convert.ToDouble(SplitForData[2]);
+                            string Kategori = SplitForData[3];
+                            string BilledStiC = SplitForData[4];
+                            string BilledStiFuld = SplitForData[5];
+                            int Antal = Convert.ToInt32(SplitForData[6]);
+
+                            //Her initialiserer vi et Spil objekt med de data der er trukket ud af string[] SplitForData[j]
+                            Spil spil = new Spil(Navn, Id, Pris, Kategori, BilledStiC, BilledStiFuld, Antal);
+
+                            //og her tilføjer vi det til ordrens List<Spil> Varer.
+                            ordre.Varer.Add(spil);
+                        }
                     }
-                    else
+                    catch(Exception e)
                     {
-                        //Hvis ikke vi er i index 0 er vi i SpilData, og det bruger vi til at initialisere et spil objekt,
-                        //som kan tilføjes til ordrens Varer liste. Det er vigtigt at vide at vi første initialisere variabler
-                        //med data, så vi kan bruge den originale constructor i Spil klassen.
-
-                        string Navn = SplitForData[0];
-                        int Id = Convert.ToInt32(SplitForData[1]);
-                        double Pris = Convert.ToDouble(SplitForData[2]);
-                        string Kategori = SplitForData[3];
-                        string BilledStiC = SplitForData[4];
-                        string BilledStiFuld = SplitForData[5];
-                        int Antal = Convert.ToInt32(SplitForData[6]);
-
-                        //Her initialiserer vi et Spil objekt med de data der er trukket ud af string[] SplitForData[j]
-                        Spil spil = new Spil(Navn, Id, Pris, Kategori, BilledStiC, BilledStiFuld, Antal);
-
-                        //og her tilføjer vi det til ordrens List<Spil> Varer.
-                        ordre.Varer.Add(spil);
+                        FileIO.LogError(e.Message, "/ErrorLog");
                     }
                 }
 
