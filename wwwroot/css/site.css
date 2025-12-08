@@ -218,6 +218,12 @@ body {
     text-align:right;
     margin-right:5px;
 }
+.searchbtn {
+    background-color: seagreen;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
 /* test kode fra ASP.NET tutorial */
 /*
 .card-columns .card:hover .card-img {

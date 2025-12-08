@@ -24,6 +24,19 @@ namespace BratspilsDepot.Models
 
         public double Total;
         public string bestillingsdato;
+        public void GemOrdreId(int ordreID)
+        {
+            List<string> OrdreTæller = new List<string>();
+            OrdreTæller.Add(ordreId.ToString());
+
+            FileIO.Log(OrdreTæller, "/OrdreID");
+        }
+
+        public int HentOrdreId()
+        {
+            int ordreID = FileIO.ReadOrdreId("/OrdreID");
+            return ordreID;
+        }
         public Ordre()
         {
             OrdreId = HentOrdreId();
