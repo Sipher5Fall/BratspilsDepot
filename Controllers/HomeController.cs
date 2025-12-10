@@ -36,12 +36,14 @@ namespace BratspilsDepot.Controllers
             Medarbejder admin = weShop.LavMedarbejder();
             return View(admin);
         }
-        public IActionResult checklogin(string UserName, string Password)
+        public IActionResult checklogin(string uname, string psw)
         {
             Medarbejder admin = weShop.LavMedarbejder();
-            if (UserName == admin.Brugernavn && Password == admin.Password)
+            List<Ordre> OrdreHistorik = weShop.HentOrdreHistorik();
+
+            if (uname == admin.Brugernavn && psw == admin.Password)
             { 
-                return View("OrdreHistorik"); 
+                return View("OrdreHistorik", OrdreHistorik); 
             }
             else 
              
