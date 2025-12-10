@@ -1,5 +1,4 @@
 ﻿@model Medarbejder
-<!DOCTYPE html>
 
 
 <head>
@@ -104,25 +103,27 @@ span.psw {
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
-<div id="id01" class="modal">
+ 
+        <div id="id01" class="modal">
 
-        <form class="modal-content animate" asp-area="" asp-controller="Home" asp-action="OrdreHistorik" method="post">
+            <form class="modal-content animate" asp-area="" asp-controller="Home" asp-action="checklogin" method="post">
 
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" id="UserName" required>
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" id="UserName" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" id="Password" required>
-        
-      <button type="submit">Login</button>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" id="Password" required>
 
-    </div>
+                    <button type="submit" value="submit">Login</button>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+
+                </div>
+            </form>
+        </div>
     
-    </div>
-  </form>
-</div>
 </body>
