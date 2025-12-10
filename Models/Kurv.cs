@@ -28,7 +28,7 @@ namespace BratspilsDepot.Models
         }
         public void LægIKurv(int Id)
         {
-            List<Spil> localKatalog = katalog.HentKatalogspil();
+            List<Spil> localKatalog = katalog.SeKatalog();
             for (int i = 0; i < localKatalog.Count; i++) 
             { 
                 if (localKatalog[i].SpilId == Id)
