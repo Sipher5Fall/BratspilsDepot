@@ -10,18 +10,33 @@ namespace BratspilsDepot.Models
     */
     public class SpilKatalog
     {
-        
+        List<string[]> TekstKatalog;
         List<Spil> Katalog;
         public SpilKatalog() 
         { 
-            
+            TekstKatalog = new List<string[]>(); 
+            TekstKatalog = HentKatalogtekst(); 
             Katalog = new List<Spil>();
             BygKatalogspil();
         }
         
-   
+        public List<string[]> HentKatalogtekst()
+        {
+            
+            string Katalogsti = "";
+            Katalogsti += "/SpilKatalog";
+            List<string> SpilIKatalog = FileIO.Read(Katalogsti);
 
-        public void BygKatalogspil()
+            foreach (string spil in SpilIKatalog)
+            {
+
+                string[] splittet = spil.Split(';');
+                TekstKatalog.Add(splittet);
+            }
+            return TekstKatalog;
+        }
+
+        public void BygKatalogspil()    // læser først filen som har en masse linjer.  det vi får tilbage af filen er en liste af string. hakker den op pg æaver et spil med alle punkter i og sætter dem ned. 
         {
             string Katalogsti = "";
             Katalogsti += "/SpilKatalog";
@@ -34,6 +49,11 @@ namespace BratspilsDepot.Models
                 Katalog.Add(produkt);
             } 
         }
+        public List<Spil> HentKatalogspil()
+        {
+            return Katalog;
+        }
+
 
         public List<Spil> SeKatalog()
         {

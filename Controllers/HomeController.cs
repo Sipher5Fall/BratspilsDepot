@@ -102,14 +102,22 @@ namespace BratspilsDepot.Controllers
 
             List<Spil> alleSpil = weShop.SeKatalog();
             List<Spil> Søgefelt = new List<Spil>();
-
-            for (int i = 0; i < alleSpil.Count; i++)
+            if (kategori == null)
             {
-                string spilKatagorier = alleSpil[i].SpilKategori.ToLower();
-
-                if (spilKatagorier.Contains(kategori.ToLower()))
+                Søgefelt = alleSpil.ToList();
+            }
+            else
+            {
+                for (int i = 0; i < alleSpil.Count; i++)
                 {
-                    Søgefelt.Add(alleSpil[i]);
+                    string spilKatagorier = alleSpil[i].SpilKategori.ToLower();
+
+
+
+                    if (spilKatagorier.Contains(kategori.ToLower()))
+                    {
+                        Søgefelt.Add(alleSpil[i]);
+                    }
                 }
             }
             return View("Index", Søgefelt);
