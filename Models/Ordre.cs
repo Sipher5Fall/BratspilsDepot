@@ -40,7 +40,7 @@ namespace BratspilsDepot.Models
         public Ordre()
         {
             OrdreId = HentOrdreId();
-            OrdreId++;
+            OrdreId = OrdreId + 1;
             GemOrdreId(OrdreId);
 
             Varer = new List<Spil>();

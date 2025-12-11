@@ -95,7 +95,7 @@ namespace BratspilsDepot.Models
         public void Bestil(Ordre ordre)
         {
 
-            ordre.Varer = varer;
+            ordre.Varer = varer.ToList();
             ordre.Total = BeregnetPris.Beregnpris(varer);
             NukeKurv();
         }
